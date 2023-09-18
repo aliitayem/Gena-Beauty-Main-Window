@@ -33,14 +33,14 @@ def query_database():
         if count % 2 == 0:
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
-                               record[0], record[1], record[2], record[3], record[4], record[5], record[6], record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[0], record[1], record[2], record[3], record[4], record[5], record[6],
+                               record[7], record[8], record[9], record[10]),
                            tags=('evenrow',))
         else:
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
-                               record[0], record[1], record[2], record[3], record[4], record[5], record[6], record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[0], record[1], record[2], record[3], record[4], record[5], record[6],
+                               record[7], record[8], record[9], record[10]),
                            tags=('oddrow',))
         # increment counter
         count += 1
@@ -69,65 +69,6 @@ def highlight_color():
     if highlight_color:
         style.map('Treeview',
                   background=[('selected', highlight_color)])
-
-
-def search_id():
-    search_id = id_entry.get()
-
-    for record in my_tree.get_children():
-        my_tree.delete(record)
-
-    db = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd="root",
-        database="inventory"
-    )
-
-    mycursor = db.cursor()
-
-    sql = "SELECT * FROM products WHERE id=%s"
-
-    mycursor.execute(sql, (search_id,))
-    records = mycursor.fetchall()
-
-    # Add our data to the screen
-    global count
-    count = 0
-
-    for record in records:
-        if count % 2 == 0:
-            my_tree.insert(parent='', index='end', iid=count, text='',
-                           values=(
-                               record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
-                           tags=('evenrow',))
-        else:
-            my_tree.insert(parent='', index='end', iid=count, text='',
-                           values=(
-                               record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
-                           tags=('oddrow',))
-        # increment counter
-        count += 1
-
-    db.commit()
-    db.close()
-
-    id_entry.delete(0, END)
-    barcode_entry.delete(0, END)
-    name_entry.delete(0, END)
-    brand_entry.delete(0, END)
-    category_entry.delete(0, END)
-    location_entry.delete(0, END)
-    size_entry.delete(0, END)
-    price_entry.delete(0, END)
-    cost_entry.delete(0, END)
-    quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
-    color_entry.delete(0, END)
 
 
 def search_barcode(event=None):
@@ -159,15 +100,13 @@ def search_barcode(event=None):
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('evenrow',))
         else:
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('oddrow',))
         # increment counter
         count += 1
@@ -175,7 +114,6 @@ def search_barcode(event=None):
     db.commit()
     db.close()
 
-    id_entry.delete(0, END)
     barcode_entry.delete(0, END)
     name_entry.delete(0, END)
     brand_entry.delete(0, END)
@@ -185,7 +123,6 @@ def search_barcode(event=None):
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
 
@@ -226,15 +163,13 @@ def search_name():
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('evenrow',))
         else:
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('oddrow',))
         # increment counter
         count += 1
@@ -242,7 +177,6 @@ def search_name():
     db.commit()
     db.close()
 
-    id_entry.delete(0, END)
     barcode_entry.delete(0, END)
     name_entry.delete(0, END)
     brand_entry.delete(0, END)
@@ -252,7 +186,6 @@ def search_name():
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
 
@@ -285,15 +218,13 @@ def search_brand():
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('evenrow',))
         else:
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('oddrow',))
         # increment counter
         count += 1
@@ -301,7 +232,6 @@ def search_brand():
     db.commit()
     db.close()
 
-    id_entry.delete(0, END)
     barcode_entry.delete(0, END)
     name_entry.delete(0, END)
     brand_entry.delete(0, END)
@@ -311,7 +241,6 @@ def search_brand():
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
 
@@ -344,15 +273,13 @@ def search_category():
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('evenrow',))
         else:
             my_tree.insert(parent='', index='end', iid=count, text='',
                            values=(
                                record[0], record[1], record[2], record[3], record[4], record[5], record[6],
-                               record[7],
-                               record[8], record[9], record[10], record[11]),
+                               record[7], record[8], record[9], record[10]),
                            tags=('oddrow',))
         # increment counter
         count += 1
@@ -360,7 +287,6 @@ def search_category():
     db.commit()
     db.close()
 
-    id_entry.delete(0, END)
     barcode_entry.delete(0, END)
     name_entry.delete(0, END)
     brand_entry.delete(0, END)
@@ -370,7 +296,6 @@ def search_category():
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
 
@@ -389,7 +314,6 @@ options_menu.add_command(label="Highlight Color", command=highlight_color)
 search_menu = Menu(my_menu, tearoff=0)
 my_menu.add_cascade(label="Search By", menu=search_menu)
 
-search_menu.add_command(label="ID", command=search_id)
 search_menu.add_command(label="Barcode", command=search_barcode)
 search_menu.add_command(label="Name", command=search_name)
 search_menu.add_command(label="Brand", command=search_brand)
@@ -431,27 +355,25 @@ tree_scroll.config(command=my_tree.yview)
 
 # Define Our Columns
 my_tree['columns'] = (
-    "ID", "Barcode", "Name", "Brand", "Category", "Location", "Size", "Price", "Cost", "Quantity", "Reorder Point",
-    "Color")
+    "ID", "Barcode", "Name", "Brand", "Category", "Location", "Size", "Price", "Cost", "Quantity", "Color")
 
 # Format Our Columns
 my_tree.column("#0", width=0, stretch=NO)
-my_tree.column("ID", anchor=W, width=50)
+my_tree.column("ID", anchor=CENTER, width=50)
 my_tree.column("Barcode", anchor=CENTER, width=140)
-my_tree.column("Name", anchor=CENTER, width=210)
-my_tree.column("Brand", anchor=CENTER, width=100)
+my_tree.column("Name", anchor=CENTER, width=280)
+my_tree.column("Brand", anchor=CENTER, width=110)
 my_tree.column("Category", anchor=CENTER, width=100)
-my_tree.column("Location", anchor=CENTER, width=150)
-my_tree.column("Size", anchor=CENTER, width=100)
+my_tree.column("Location", anchor=CENTER, width=120)
+my_tree.column("Size", anchor=CENTER, width=80)
 my_tree.column("Price", anchor=CENTER, width=80)
 my_tree.column("Cost", anchor=CENTER, width=80)
-my_tree.column("Quantity", anchor=CENTER, width=70)
-my_tree.column("Reorder Point", anchor=CENTER, width=100)
-my_tree.column("Color", anchor=CENTER, width=100)
+my_tree.column("Quantity", anchor=CENTER, width=60)
+my_tree.column("Color", anchor=CENTER, width=120)
 
 # Create Headings
 my_tree.heading("#0", text="", anchor=W)
-my_tree.heading("ID", text="ID", anchor=W)
+my_tree.heading("ID", text="ID", anchor=CENTER)
 my_tree.heading("Barcode", text="Barcode", anchor=CENTER)
 my_tree.heading("Name", text="Name", anchor=CENTER)
 my_tree.heading("Brand", text="Brand", anchor=CENTER)
@@ -461,7 +383,6 @@ my_tree.heading("Size", text="Size", anchor=CENTER)
 my_tree.heading("Price", text="Price", anchor=CENTER)
 my_tree.heading("Cost", text="Cost", anchor=CENTER)
 my_tree.heading("Quantity", text="Quantity", anchor=CENTER)
-my_tree.heading("Reorder Point", text="Reorder Point", anchor=CENTER)
 my_tree.heading("Color", text="Color", anchor=CENTER)
 
 # Create Striped Row Tags
@@ -473,22 +394,22 @@ data_frame = LabelFrame(root, text="Record")
 data_frame.pack(fill="x", expand="yes", padx=20)
 
 id_label = Label(data_frame, text="ID")
-id_label.grid(row=0, column=0, padx=10, pady=10)
+id_label.grid(row=0, column=10, padx=10, pady=10)
 global id_entry
 id_entry = Entry(data_frame)
-id_entry.grid(row=0, column=1, padx=10, pady=10)
+id_entry.grid(row=0, column=11, padx=10, pady=10)
 
 barcode_label = Label(data_frame, text="Barcode")
-barcode_label.grid(row=0, column=2, padx=10, pady=10)
+barcode_label.grid(row=0, column=0, padx=10, pady=10)
 global barcode_entry
 barcode_entry = Entry(data_frame)
-barcode_entry.grid(row=0, column=3, padx=10, pady=10)
+barcode_entry.grid(row=0, column=1, padx=10, pady=10)
 
 name_label = Label(data_frame, text="Name")
-name_label.grid(row=0, column=4, padx=10, pady=10)
+name_label.grid(row=0, column=2, padx=10, pady=10)
 global name_entry
 name_entry = Entry(data_frame)
-name_entry.grid(row=0, column=5, padx=10, pady=10)
+name_entry.grid(row=0, column=3, padx=10, pady=10)
 
 brand_label = Label(data_frame, text="Brand")
 brand_label.grid(row=1, column=0, padx=10, pady=10)
@@ -515,10 +436,10 @@ size_entry = Entry(data_frame)
 size_entry.grid(row=1, column=7, padx=10, pady=10)
 
 price_label = Label(data_frame, text="Price")
-price_label.grid(row=0, column=6, padx=10, pady=10)
+price_label.grid(row=0, column=4, padx=10, pady=10)
 global price_entry
 price_entry = Entry(data_frame)
-price_entry.grid(row=0, column=7, padx=10, pady=10)
+price_entry.grid(row=0, column=5, padx=10, pady=10)
 
 cost_label = Label(data_frame, text="Cost")
 cost_label.grid(row=1, column=8, padx=10, pady=10)
@@ -527,24 +448,16 @@ cost_entry = Entry(data_frame)
 cost_entry.grid(row=1, column=9, padx=10, pady=10)
 
 quantity_label = Label(data_frame, text="Quantity")
-quantity_label.grid(row=0, column=8, padx=10, pady=10)
+quantity_label.grid(row=0, column=6, padx=10, pady=10)
 global quantity_entry
 quantity_entry = Entry(data_frame)
-quantity_entry.grid(row=0, column=9, padx=10, pady=10)
-
-reorder_point_label = Label(data_frame, text="Reorder Point")
-reorder_point_label.grid(row=1, column=10, padx=10, pady=10)
-global reorder_point_entry
-reorder_point_entry = Entry(data_frame)
-reorder_point_entry.grid(row=1, column=11, padx=10, pady=10)
+quantity_entry.grid(row=0, column=7, padx=10, pady=10)
 
 color_label = Label(data_frame, text="Color")
-color_label.grid(row=0, column=10, padx=10, pady=10)
+color_label.grid(row=0, column=8, padx=10, pady=10)
 global color_entry
 color_entry = Entry(data_frame)
-color_entry.grid(row=0, column=11, padx=10, pady=10)
-
-
+color_entry.grid(row=0, column=9, padx=10, pady=10)
 
 def up():
     rows = my_tree.selection()
@@ -578,63 +491,6 @@ def remove_one():
 
     clear_entries()
 
-
-'''
-def remove_many():
-    response = messagebox.askyesno("Delete Records", "Are You Sure? This Will Delete All Records Selected")
-
-    if response == 1:
-        x = my_tree.selection()
-
-        ids_to_delete = []
-
-        for record in x:
-            ids_to_delete.append(my_tree.item(record, 'values')[0])
-
-        for record in x:
-            my_tree.delete(record)
-
-
-        db = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="root",
-            database="inventory"
-        )
-
-        mycursor = db.cursor()
-        int_list = (list(map(int, ids_to_delete)))
-        mycursor.executemany("DELETE FROM products WHERE id = %?", int_list)
-        db.commit()
-        db.close()
-
-
-def remove_all():
-    response = messagebox.askyesno("Delete Database", "Are You Sure You Want To Delete Everything In The Database?")
-
-    if response == 1:
-
-        for record in my_tree.get_children():
-            my_tree.delete(record)
-
-        db = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="root",
-            database="inventory"
-        )
-
-        mycursor = db.cursor()
-
-        #mycursor.execute("DROP TABLE products")
-
-        db.commit()
-        db.close()
-
-        clear_entries()
-'''
-
-
 def clear_entries():
     id_entry.delete(0, END)
     barcode_entry.delete(0, END)
@@ -646,7 +502,6 @@ def clear_entries():
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
 
@@ -661,7 +516,6 @@ def select_record(e):
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
     # Grab Record Number
@@ -680,8 +534,7 @@ def select_record(e):
     price_entry.insert(0, values[7])
     cost_entry.insert(0, values[8])
     quantity_entry.insert(0, values[9])
-    reorder_point_entry.insert(0, values[10])
-    color_entry.insert(0, values[11])
+    color_entry.insert(0, values[10])
 
 
 def update_record():
@@ -689,8 +542,7 @@ def update_record():
     selected = my_tree.focus()
     my_tree.item(selected, text="", values=(
         id_entry.get(), barcode_entry.get(), name_entry.get(), brand_entry.get(), category_entry.get(),
-        location_entry.get(), size_entry.get(), price_entry.get(), cost_entry.get(), quantity_entry.get(),
-        reorder_point_entry.get(), color_entry.get(),))
+        location_entry.get(), size_entry.get(), price_entry.get(), cost_entry.get(), quantity_entry.get(), color_entry.get(),))
 
     # Update Database
     db = mysql.connector.connect(
@@ -702,7 +554,7 @@ def update_record():
 
     mycursor = db.cursor()
 
-    sql_command = """UPDATE products SET barcode=%s, name=%s, brand=%s, category=%s, location=%s, size=%s, price=%s, cost=%s, quantity=%s, reorder_point=%s, color=%s WHERE id = %s"""
+    sql_command = """UPDATE products SET barcode=%s, name=%s, brand=%s, category=%s, location=%s, size=%s, price=%s, cost=%s, quantity=%s, color=%s WHERE id = %s"""
 
     barcode = barcode_entry.get()
     name = name_entry.get()
@@ -713,12 +565,11 @@ def update_record():
     price = price_entry.get()
     cost = cost_entry.get()
     quantity = quantity_entry.get()
-    reorder_point = reorder_point_entry.get()
     color = color_entry.get()
 
     id = id_entry.get()
 
-    inputs = (barcode, name, brand, category, location, size, price, cost, quantity, reorder_point, color, id)
+    inputs = (barcode, name, brand, category, location, size, price, cost, quantity, color, id)
 
     mycursor.execute(sql_command, inputs)
 
@@ -735,7 +586,6 @@ def update_record():
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
 
@@ -743,9 +593,8 @@ def add_record():
     # Update Treeview
     selected = my_tree.focus()
     my_tree.item(selected, text="", values=(
-        id_entry.get(), barcode_entry.get(), name_entry.get(), brand_entry.get(), category_entry.get(),
-        location_entry.get(), size_entry.get(), price_entry.get(), cost_entry.get(), quantity_entry.get(),
-        reorder_point_entry.get(), color_entry.get(),))
+        barcode_entry.get(), name_entry.get(), brand_entry.get(), category_entry.get(),
+        location_entry.get(), size_entry.get(), price_entry.get(), cost_entry.get(), quantity_entry.get(), color_entry.get(),))
 
     # Update Database
     db = mysql.connector.connect(
@@ -766,12 +615,11 @@ def add_record():
     price = price_entry.get()
     cost = cost_entry.get()
     quantity = quantity_entry.get()
-    reorder_point = reorder_point_entry.get()
     color = color_entry.get()
 
-    insert_query = "INSERT INTO products (barcode, name, brand, category, location, size, price, cost, quantity, reorder_point, color) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO products (barcode, name, brand, category, location, size, price, cost, quantity, color) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
-    vals = (barcode, name, brand, category, location, size, price, cost, quantity, reorder_point, color)
+    vals = (barcode, name, brand, category, location, size, price, cost, quantity, color)
 
     mycursor.execute(insert_query, vals)
 
@@ -788,17 +636,12 @@ def add_record():
     price_entry.delete(0, END)
     cost_entry.delete(0, END)
     quantity_entry.delete(0, END)
-    reorder_point_entry.delete(0, END)
     color_entry.delete(0, END)
 
     # Update Tree View
     my_tree.delete(*my_tree.get_children())
     # Query Database And Refresh Treeview
     query_database()
-
-
-def cart_mode():
-    import cart
 
 
 # Add Buttons
@@ -813,13 +656,7 @@ add_button.grid(row=0, column=1, padx=10, pady=10)
 
 remove_one_button = Button(button_frame, text="Delete Record", command=remove_one)
 remove_one_button.grid(row=0, column=3, padx=10, pady=10)
-'''
-remove_all_button = Button(button_frame, text="Remove All Records", command=remove_all)
-remove_all_button.grid(row=0, column=2, padx=10, pady=10)
 
-remove_many_button = Button(button_frame, text="Remove Many Selected", command=remove_many)
-remove_many_button.grid(row=0, column=4, padx=10, pady=10)
-'''
 move_up_button = Button(button_frame, text="Move Up", command=up)
 move_up_button.grid(row=0, column=5, padx=10, pady=10)
 
@@ -831,9 +668,6 @@ select_record_button.grid(row=0, column=7, padx=10, pady=10)
 
 reset_button = Button(button_frame, text="Reset", command=query_database)
 reset_button.grid(row=0, column=8, padx=10, pady=10)
-
-cart_mode_button = Button(button_frame, text="Cart Mode", command=cart_mode)
-cart_mode_button.grid(row=0, column=9, padx=10, pady=10)
 
 # Create the toggle button
 toggle_var = IntVar()
