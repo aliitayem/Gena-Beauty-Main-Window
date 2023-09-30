@@ -134,6 +134,13 @@ def toggle_bind(event=None):
         root.unbind("<Return>")
 
 
+def cart_mode():
+    # main.py
+
+    with open("cart.py") as f:
+        exec(f.read())
+
+
 def search_name():
     search_name = name_entry.get()
 
@@ -668,6 +675,9 @@ select_record_button.grid(row=0, column=7, padx=10, pady=10)
 
 reset_button = Button(button_frame, text="Reset", command=query_database)
 reset_button.grid(row=0, column=8, padx=10, pady=10)
+
+cart_mode_button = Button(button_frame, text="Cart", command=cart_mode)
+cart_mode_button.grid(row=0, column=9, padx=10, pady=10)
 
 # Create the toggle button
 toggle_var = IntVar()
